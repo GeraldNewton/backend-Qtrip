@@ -25,17 +25,17 @@ app.use(cors());
 
 
 mongoose.connect(MONGODB_URL).then(async()=>{
-    await user_model.init();// will force the control to wait untill init() creates the unique indexes for the model user_model for Username key
+    await user_model.init();// ! will force the control to wait untill init() creates the unique indexes for the model user_model for Username key
 })
 
 
-// you can also do db.users.createIndex( { "Username": 1 }, { unique: true } ) to create unique indexes for the model after mongoose connects to the mongodb and databse is created 
-// above command is run in command prompt=>mongosh
-// after everytime you do db.dropDatabase()
-// for more info=>
-// mongoose ->validation->The unique Option is Not a Validator->see in it= MongoDB unique indexes and FAQ
-// https://www.mongodb.com/docs/manual/core/index-unique/
-// https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/ 
+// ? you can also do db.users.createIndex( { "Username": 1 }, { unique: true } ) to create unique indexes for the model after mongoose connects to the mongodb and databse is created 
+// ? above command is run in command prompt=>mongosh
+// ? after everytime you do db.dropDatabase()
+// ? for more info=>
+// ? mongoose ->validation->The unique Option is Not a Validator->see in it= MongoDB unique indexes and FAQ
+// ? https://www.mongodb.com/docs/manual/core/index-unique/
+// ? https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/ 
 
 
 app.get("/login",verifyCredentials(),login())

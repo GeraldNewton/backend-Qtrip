@@ -2,7 +2,7 @@ const user_model=require("../models/user_model");
 const http=require("http-status")
 
 const signup=()=>async(req,res)=>{
-    const {username,password}=req.headers;
+    const {username,password}=req.headers; // ! when data comes with headers the keys are converted into lowe case
     try{
         const response=await user_model.create({Username:username,password:password});
         res.status(http.CREATED).send(response);

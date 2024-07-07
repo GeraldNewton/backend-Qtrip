@@ -4,7 +4,7 @@ const {JWT_SECRETKEY,JWT_EXPIRESIN}=require("../config")
 const http=require("http-status")
 
 const login=()=>async(req,res)=>{
-    const {username,password}=req.headers;
+    const {username,password}=req.headers; // ! when data comes with headers the keys are converted into lowe case
     const user=await user_model.findOne({Username:username});
     if(!user)
     res.status(http.NOT_FOUND).send({error:"Not Found",message:"User not found"})

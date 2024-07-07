@@ -13,7 +13,7 @@ const makeReservation=()=>async(req,res)=>{
         if(e.name && e.name=="ValidationError"){
                 const obj={
                 error:"Valdiation Falied",
-                message:e.message.slice(31,e.message.length)  //understood by looking at the e.message
+                message:e.message.slice(31,e.message.length)  //! understood by looking at the e.message
             }
             res.status(http.BAD_REQUEST).json(obj);
         }
