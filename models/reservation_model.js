@@ -27,17 +27,12 @@ const reservation_schema=mongoose.Schema({
         type:Number,
         required:true
     },
-    date_of_resevation:{
+    date_of_reservation:{
         type:Date,
         required:true
     }
 })
 
-
-reservation_schema.pre("save",(next)=>{
-    this.date_of_resevation=new Date();
-    return next();
-})
 
 const reservation_model=mongoose.model("reservation",reservation_schema)
 module.exports=reservation_model

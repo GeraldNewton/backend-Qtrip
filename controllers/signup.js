@@ -2,7 +2,7 @@ const user_model=require("../models/user_model");
 const http=require("http-status")
 
 const signup=()=>async(req,res)=>{
-    const {username,password}=req.headers; // ! when data comes with headers the keys are converted into lowe case
+    const {username,password}=req.headers; // ! when data comes with headers the keys are converted into lower case
     try{
         const response=await user_model.create({Username:username,password:password});
         res.status(http.CREATED).send(response);
@@ -18,7 +18,7 @@ const signup=()=>async(req,res)=>{
             obj.message=e.errors.password.message
             res.status(http.BAD_REQUEST).send(obj);
         }
-        else res.status(http.INTERNAL_SERVER_ERROR).send({error:"Not Available",message:"internal server error"})
+        else res.status(http.INTERNAL_SERVER_ERROR).send({error:"Internal Server Error",message:"Cannot Sign Up due to Server Error"})
     }
 }
 

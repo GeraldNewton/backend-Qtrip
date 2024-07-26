@@ -23,7 +23,7 @@ const get=()=>async(req,res)=>{
         else if(get=="adventure-details")
         {
             const {name}=req.query;
-            response=await adventure_details.find({name})
+            response=await adventure_details.find({name},{count:0}) // ? PROJECTION: getting only required data excluding count 
         }
         else if (get=="reservations")
         {
@@ -33,13 +33,13 @@ const get=()=>async(req,res)=>{
             response=await reservation.find({Username});
         }
         else
-        res.status(http.BAD_REQUEST).send({error:`Cannot get ${get}`,message:`No data available for ${get}`})
+        res.status(http.BAD_REQUEST).send({error:`Get parameter invalid`,message:`No data available for this page`})
         // ! to handle if the data for given value not found
         if(!response.length)
         return res.status(http.NOT_FOUND).send({error:"Not Found",message:"No data found for the given values"})
         res.send(response);
     }catch(e){
-        res.send({error:"Not Available",message:"Internal Server Error"})
+        res.status(http.INTERNAL_SERVER_ERROR).send({error:"Not Available",message:"Internal Server Error"})
     }
 };
 

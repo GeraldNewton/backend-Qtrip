@@ -13,6 +13,7 @@ const {MONGODB_URL,PORT}=require("./config");
 const user_model = require("./models/user_model.js");
 const verifyReservation=require("./middlewares/verifyReservation.js")
 const makeReservation=require("./controllers/makeResevation.js")
+const deleteReservation=require("./controllers/deleteReservation.js")
 
 
 const app=express();
@@ -44,9 +45,10 @@ app.post("/signup",verifyCredentials(),signup())
 app.get("/get/:get",verifyToken(),get())
 
 app.post("/reservations",verifyToken(),verifyReservation(),makeReservation())
+app.delete("/reservation",deleteReservation())
 
 app.all("/*",(req,res)=>res.status(http.NOT_FOUND).send({error:"Not Found",message:"given url path is not found"}))
 
 app.listen(PORT,()=>{
-    console.log("listening at port 3000");
+    console.log(`listening at port ${PORT}`);
 })
