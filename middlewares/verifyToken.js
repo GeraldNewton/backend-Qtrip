@@ -20,8 +20,7 @@ const verifyToken=()=>async(req,res,next)=>{
         if (e.name=="TokenExpiredError")
         res.status(http.UNAUTHORIZED).send({
             error:"Token Error",
-            message: "token expired",
-            expiredAt: "2024-06-26T14:47:49.000Z"
+            message: "token expired"
         });
         else
         res.status(http.UNAUTHORIZED).send({
