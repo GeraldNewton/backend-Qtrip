@@ -1,5 +1,5 @@
 for local Run:-
-execute setup.sh
+execute chmod +x ./setup.sh in git bash
 use MONGODB_URL_ORIGINAL in place of MONGODB_URL in index.js
 set 
 "scripts": {
@@ -8,7 +8,7 @@ set
 in package.json
 
 for deployment run:-
-execute setup_remote_MongoDB.sh 
+execute chmod +x ./setup_remote_MongoDB.sh in git bash
 use MONGODB_URL in place of MONGODB_URL_ORIGINAL in index.js
 set 
 "scripts": {
