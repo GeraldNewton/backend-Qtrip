@@ -9,7 +9,7 @@ const http=require("http-status");
 // ? we have to return a function for it to have access to the req and response object using function currying
 // ? ()=>()=>{} is called function currying and we used it to return the actual controller
 
-const get=()=>async(req,res)=>{    
+const get=()=>async(req,res)=>{ 
     const {get}=req.params;
     var response;
     // ! to handle if the database is down

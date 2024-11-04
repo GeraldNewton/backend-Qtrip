@@ -11,6 +11,9 @@ const verifyToken=()=>async(req,res,next)=>{
 // ? stored as authorization in the req.headers object. This behavior is compliant 
 // ? with the HTTP/1.1 specification, which states that header field names are case-insensitive.
 
+    const {get}=req.params;
+    if(get=="cities")
+    return next();
     const {authorization}=req.headers;
     const token=authorization.split(" ")[1];
     try{
